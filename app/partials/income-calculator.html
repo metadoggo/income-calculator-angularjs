@@ -1,0 +1,76 @@
+<div>
+<div class="form-container">
+  <form name="infoForm">
+    <div class="form-row">
+      <label for="payment-term">Payment Term</label>
+      <select id="payment-term" name="paymentTerm" required="required" ng-model="infoFormData.paymentTerm" ng-options="term.label for term in paymentTerms"></select>
+    </div>
+    <div class="form-row">
+      <label for="amount">Amount</label>
+      <input id="amount" name="amount" required="required" ng-model="infoFormData.amount" />
+    </div>
+    <div class="form-row">
+      <label for="hours-per-day">Hours per day</label>
+      <input id="hours-per-day" name="hoursPerDay" required="required" ng-model="infoFormData.hoursPerDay" />
+    </div>
+    <div class="form-row">
+      <label for="days-per-week">Days per week</label>
+      <input id="days-per-week" name="daysPerWeek" required="required" ng-model="infoFormData.daysPerWeek" />
+    </div>
+    <div class="form-row">
+      <label for="holiday">Holiday (days)</label>
+      <input id="holiday" name="daysHoliday" required="required" ng-model="infoFormData.daysHoliday" />
+    </div>
+    <div class="form-row">
+      <label for="repay-student-loan">Repay Student Loan</label>
+      <input id="repay-student-loan" name="repayStudentLoan" type="checkbox" ng-model="infoFormData.repayStudentLoan" />
+    </div>
+    <div class="form-row">
+      <button>Calculate</button>
+    </div>
+  </form>
+</div>
+  <div class="results-container">
+    <div class="result-set" ng-repeat="result in results">
+      <nav>
+        <button ng-repeat="year in taxData.years" ng-click="calculate(year)">{{ year.label }}</button>
+      </nav>
+      <div class="tab-content">
+        <table>
+          <thead>
+          <tr>
+            <td></td>
+            <td ng-repeat="term in paymentTerms">{{ label }}</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Gross income</td>
+            <td ng-repeat="value in result.currentYeargrossIncome">{{ value }}</td>
+          </tr>
+          <tr>
+            <td>Income tax</td>
+            <td ng-repeat="value in result.currentYearincomeTax">{{ value }}</td>
+          </tr>
+          <tr>
+            <td>National insurance</td>
+            <td ng-repeat="value in result.currentYearnationalInsurance">{{ value }}</td>
+          </tr>
+          <tr>
+            <td>Student loan</td>
+            <td ng-repeat="value in result.currentYearstudentLoan">{{ value }}</td>
+          </tr>
+          <tr>
+            <td>Total deductions</td>
+            <td ng-repeat="value in result.currentYeartotalDeductions">{{ value }}</td>
+          </tr>
+          <tr>
+            <td>Net income</td>
+            <td ng-repeat="value in result.currentYearnetIncome">{{ value }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
