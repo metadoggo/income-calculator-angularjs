@@ -4,23 +4,7 @@ angular.module('hd.incomeCalculator', [])
 	.controller('IncomeCalculatorController', ['$scope', '$http', 'incomeCalculatorProvider', function ($scope, $http, incomeCalculatorProvider) {
 		$scope.results = [];
 
-		$scope.paymentTerms = [
-			{
-				label: 'Annually'
-			},
-			{
-				label: 'Monthly'
-			},
-			{
-				label: 'Weekly'
-			},
-			{
-				label: 'Daily'
-			},
-			{
-				label: 'Hourly'
-			}
-		];
+		$scope.paymentTerms = ['Annually', 'Monthly', 'Weekly', 'Daily', 'Hourly'];
 
 		$scope.infoFormData = {
 			paymentTerm: $scope.paymentTerms[0],
@@ -35,7 +19,7 @@ angular.module('hd.incomeCalculator', [])
 			var i = data.years.length;
 			while (i--) {
 				var taxYear = data.years[i];
-				if (taxYear.label == data.default.year) {
+				if (taxYear.label === data.default.year) {
 					$scope.taxYear = taxYear;
 					break;
 				}
@@ -113,7 +97,7 @@ angular.module('hd.incomeCalculator', [])
 							var incomeTaxBand = taxBands[i];
 							if (grossIncome >= incomeTaxBand.limit && incomeTaxBand.limit > 0) {
 								totalIncomeTax += (incomeTaxBand.limit - remainingIncome) * incomeTaxBand.rate;
-								if (incomeTaxBand.rate == 0) {
+								if (incomeTaxBand.rate === 0) {
 									grossIncome -= incomeTaxBand.limit;
 								} else {
 									remainingIncome = incomeTaxBand.limit - remainingIncome;

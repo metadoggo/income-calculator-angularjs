@@ -4,7 +4,7 @@
 			<div class="form-row">
 				<label for="payment-term">Payment Term</label>
 				<select id="payment-term" name="paymentTerm" required="required" ng-model="infoFormData.paymentTerm"
-				        ng-options="term.label for term in paymentTerms"></select>
+				        ng-options="term for term in paymentTerms"></select>
 			</div>
 			<div class="form-row">
 				<label for="amount">Amount</label>
@@ -45,7 +45,7 @@
 					<thead>
 					<tr>
 						<td></td>
-						<td ng-repeat="term in paymentTerms">{{ term.label }}</td>
+						<td ng-repeat="term in paymentTerms">{{ term }}</td>
 					</tr>
 					</thead>
 					<tbody>
