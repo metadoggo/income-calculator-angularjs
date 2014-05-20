@@ -3,4 +3,5 @@ angular.module('hd.experiments', ['hd.incomeCalculator', 'hd.intro', 'ngRoute'])
     $routeProvider.when('/intro', {templateUrl: 'partials/intro.html', controller: 'IntroController'});
     $routeProvider.when('/income-calculator', {templateUrl: 'partials/income-calculator.html', controller: 'IncomeCalculatorController'});
     $routeProvider.otherwise({redirectTo: '/intro'});
-  }]);
+  }])
+;

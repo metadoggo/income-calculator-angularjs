@@ -8,11 +8,11 @@ angular.module('hd.incomeCalculator', [])
 
 		$scope.infoFormData = {
 			paymentTerm: $scope.paymentTerms[0],
-			amount: 61000,
+			amount: 32000,
 			hoursPerDay: 8,
 			daysPerWeek: 5,
 			daysHoliday: 33,
-			repayStudentLoan: true
+			repayStudentLoan: false
 		};
 
 		$http.get('data/tax-data.json').success(function (data) {
